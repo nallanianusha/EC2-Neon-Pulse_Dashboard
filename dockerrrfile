@@ -3,11 +3,11 @@ ADD . /pythonapp
 WORKDIR /pythonapp
 RUN pip install --prefix=/aws -r requirements.txt
 
-FROM python:3.12-alpine AS runtime 
+FROM python:3.12-slim AS runtime 
 LABEL author=devopsteamnov
 LABEL project=python
 COPY --from=build /pythonapp /laxmikanth
 COPY --from=build /aws /usr/share 
-WORKDIR /laxmikanth
+WORKDIR /laxmikanth 
 EXPOSE 5001
 CMD ["python", "app.py"]
