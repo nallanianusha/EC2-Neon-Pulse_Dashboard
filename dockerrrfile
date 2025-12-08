@@ -9,6 +9,5 @@ LABEL author="devopsteam"
 COPY --from=build /pythonapp /anu
 COPY --from=build /aws /usr/share 
 WORKDIR /anu
-WORKDIR /usr/share
 EXPOSE 5001
 CMD ["python", "app.py"]
